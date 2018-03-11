@@ -1,7 +1,7 @@
 <template>
   <div class="inputBox shadow">
     <input type="text" v-model="newTodoItem" placeholder="Type what you have to do" @keyup.enter="addTodo">
-    <span class="addContainer" @click="addTodo">
+    <span class="addContainer" @click="pushTodo">
         <i class="addBtn fas fa-plus" aria-hidden="true"> </i>
     </span>
 
@@ -17,6 +17,9 @@
 
 <script>
 import Modal from './common/Modal.vue'
+import { mapMutations} from 'vuex'
+
+
 export default {
   data() {
     return {
@@ -25,10 +28,15 @@ export default {
     }
   },
   methods: {
-    addTodo() {
+    //  ...mapSetters({
+    //     addTodo : 'pushTodo',
+    // }),
+    pushTodo() {
       if (this.newTodoItem !== "") {
         var value = this.newTodoItem && this.newTodoItem.trim();
-				this.$emit('addTodo', value)
+        // this.$emit('addTodo', value)
+        this.$store.commit('addTodo',this.newTodoItem);
+        
         this.clearInput();
       } else {
         this.showModal = !this.showModal

@@ -1,9 +1,10 @@
 <template>
   <section>
       <transition-group name="list" tag="ul">
-        <li v-for="(todoItem, index) in propsdata" :key="todoItem" :value="todoItem" class="shadow">
-            <input type="text" v-model="propsdata[index]">
-            <span class="removeBtn" type="button" @click="removeTodo(todoItem, index)">
+        <li v-for="(todoItemValue ,todoItemKey, index) in this.$store.getters.todoItems" :key="todoItemKey" class="shadow">
+            <!-- <input type="text" :value="todoItem" @input="updateOneItem"> -->
+            <input type="text" :value="todoItemValue" :key="todoItemKey" @input="updateOneItem">
+            <span class="removeBtn" type="button" @click="removeOneItem({todoItemKey, index})">
                 <i class="far fa-trash-alt" aria-hidden="true"></i>
             </span>
         </li>
@@ -12,13 +13,38 @@
 </template>
 
 <script>
+import {mapGetters, mapMutations} from 'vuex'
+
 export default {
-  props: ['propsdata'],
-  methods: {
-      removeTodo(todoItem, index) {
-          this.$emit('removeTodo', todoItem, index)
-      },
+//   props: ['propsdata'],
+  data() {
+      return {
+          inputText: '',
+      }
   },
+
+  methods: {
+      ...mapGetters({
+
+      }),
+      ...mapMutations({
+        updateOneItem : 'updateTodo',
+        removeOneItem: 'removeTodo'//인자는 알아서 생성
+      }),
+    //   updateOneItem(todoItem) {
+    //     this.$store.commit('updateTodo', todoItem)
+    //   },
+    //   removeTodo(todoItem, index) {
+    //     //   this.$emit('removeTodo', todoItem, index)
+    //     let obj={name: todoItem, index:index}
+    //     this.$store.commit('removeTodo', obj);
+    //   },
+  },
+//   computed: {
+//       todoItems() {
+//           return this.$store.state.todoItems;
+//       }
+//   }
 }
 </script>
 
