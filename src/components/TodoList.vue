@@ -2,8 +2,7 @@
   <section>
       <transition-group name="list" tag="ul">
         <li v-for="(todoItemValue ,todoItemKey, index) in this.$store.getters.todoItems" :key="todoItemKey" class="shadow">
-            <!-- <input type="text" :value="todoItem" @input="updateOneItem"> -->
-            <input type="text" :value="todoItemValue" :key="todoItemKey" @input="updateOneItem">
+            <input type="text" v-model="$store.getters.todoItems[todoItemKey]" @input="updateOneItem([todoItemKey,$store.getters.todoItems[todoItemKey]])">
             <span class="removeBtn" type="button" @click="removeOneItem({todoItemKey, index})">
                 <i class="far fa-trash-alt" aria-hidden="true"></i>
             </span>
@@ -29,7 +28,7 @@ export default {
       }),
       ...mapMutations({
         updateOneItem : 'updateTodo',
-        removeOneItem: 'removeTodo'//인자는 알아서 생성
+        removeOneItem: 'removeTodo'//인자는 한개만 생성
       }),
     //   updateOneItem(todoItem) {
     //     this.$store.commit('updateTodo', todoItem)

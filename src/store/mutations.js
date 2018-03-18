@@ -17,7 +17,7 @@
     }
     const updateTodo=(state, todoItem) => {
       console.log(todoItem)
-      localStorage.setItem(todoItem.target._value,todoItem.target.value)
+      localStorage.setItem(todoItem[0],todoItem[1])
     }
 
     export {addTodo, removeAll, removeTodo, updateTodo}
