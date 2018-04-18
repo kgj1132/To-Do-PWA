@@ -7,11 +7,12 @@ Vue.use(Vuex)
 
 const storage= {
     fetch() {
-        const items={}
+        const items={};
             for (var i=0, keys=Object.keys(localStorage); i<localStorage.length; i++) {
-                items[keys[i]]=localStorage.getItem(keys[i])
+                if (keys[i] !== "loglevel:webpack-dev-server") {
+                  items[keys[i]] = JSON.parse(localStorage.getItem(keys[i]));
+                }
             }
-            console.log(items)
         return items
     }
 }

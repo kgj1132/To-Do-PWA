@@ -1,5 +1,4 @@
 const todoItems= (state) =>{
-
-     return state.todoItems;
+    return state.todoItems;
 }
 export {todoItems}

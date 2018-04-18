@@ -1,10 +1,9 @@
 <template>
   <section>
       <transition-group name="list" tag="ul">
-        <li v-for="(todoItemValue ,todoItemKey, index) in this.$store.getters.todoItems" :key="todoItemKey" class="shadow">
-            <!-- <input type="text" :value="todoItem" @input="updateOneItem"> -->
-            <input type="text" :value="todoItemValue" :key="todoItemKey" @input="updateOneItem">
-            <span class="removeBtn" type="button" @click="removeOneItem({todoItemKey, index})">
+        <li v-for="(todoItem, index) in this.todoItems" :key="todoItem.item" class="shadow">
+            <input type="text" :value="todoItem.item" @blur="updateOneItem">
+            <span class="removeBtn" type="button" @click="removeOneItem({todoItem, index})">
                 <i class="far fa-trash-alt" aria-hidden="true"></i>
             </span>
         </li>
@@ -19,14 +18,11 @@ export default {
 //   props: ['propsdata'],
   data() {
       return {
-          inputText: '',
+          inputText: ''
       }
   },
 
   methods: {
-      ...mapGetters({
-
-      }),
       ...mapMutations({
         updateOneItem : 'updateTodo',
         removeOneItem: 'removeTodo'//인자는 알아서 생성
@@ -40,11 +36,9 @@ export default {
     //     this.$store.commit('removeTodo', obj);
     //   },
   },
-//   computed: {
-//       todoItems() {
-//           return this.$store.state.todoItems;
-//       }
-//   }
+  computed: {
+      ...mapGetters(['todoItems'])
+  }
 }
 </script>
 
