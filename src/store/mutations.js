@@ -18,15 +18,10 @@
       localStorage.removeItem(todoItemobj.todoItem.item);
       delete state.todoItems[todoItemobj.todoItem.item];
     }
-    const updateTodo=(state, event) => {
-      // Input 박스로 값을 변경하기 전 값
-      const originalValue = event.target._value;
-      // Input 박스로 변경한 최종 값
-      const updatedValue = event.target.value;
 
-      localStorage.removeItem(originalValue);
-      const obj = JSON.stringify({ completed: false, item: updatedValue });
-      localStorage.setItem(updatedValue, obj);
+    const updateTodo=(state, todoItem) => {
+      console.log(todoItem)
+      localStorage.setItem(todoItem[0],todoItem[1])
     }
 
     export {addTodo, removeAll, removeTodo, updateTodo}
