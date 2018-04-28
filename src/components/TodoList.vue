@@ -18,14 +18,11 @@ export default {
 //   props: ['propsdata'],
   data() {
       return {
-          inputText: '',
+          inputText: ''
       }
   },
 
   methods: {
-      ...mapGetters({
-
-      }),
       ...mapMutations({
         updateOneItem : 'updateTodo',
         removeOneItem: 'removeTodo'//인자는 한개만 생성
@@ -39,11 +36,9 @@ export default {
     //     this.$store.commit('removeTodo', obj);
     //   },
   },
-//   computed: {
-//       todoItems() {
-//           return this.$store.state.todoItems;
-//       }
-//   }
+  computed: {
+      ...mapGetters(['todoItems'])
+  }
 }
 </script>
 

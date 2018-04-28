@@ -1,6 +1,6 @@
 <template>
   <div class="inputBox shadow">
-    <input type="text" v-model="newTodoItem" placeholder="Type what you have to do" @keyup.enter="addTodo">
+    <input type="text" v-model="newTodoItem" placeholder="Type what you have to do" @keyup.enter="pushTodo">
     <span class="addContainer" @click="pushTodo">
         <i class="addBtn fas fa-plus" aria-hidden="true"> </i>
     </span>
@@ -33,9 +33,9 @@ export default {
     // }),
     pushTodo() {
       if (this.newTodoItem !== "") {
-        var value = this.newTodoItem && this.newTodoItem.trim();
+        const value = this.newTodoItem && this.newTodoItem.trim();
         // this.$emit('addTodo', value)
-        this.$store.commit('addTodo',this.newTodoItem);
+        this.$store.commit('addTodo', value);
         
         this.clearInput();
       } else {
