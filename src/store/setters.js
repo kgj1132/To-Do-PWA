@@ -1,4 +1,4 @@
 const setTodoItems= (statesetter) =>{
-    this.state.TodoItems=statesetter;
+    this.state.todoItems=statesetter;
 }
 export {setTodoItems}

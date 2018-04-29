@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import {mapGetters, mapMutations} from 'vuex'
+import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 
 export default {
 //   props: ['propsdata'],
@@ -23,7 +23,7 @@ export default {
   },
 
   methods: {
-      ...mapMutations({
+      ...mapActions({
         updateOneItem : 'updateTodo',
         removeOneItem: 'removeTodo'//인자는 한개만 생성
       }),
@@ -36,8 +36,9 @@ export default {
     //     this.$store.commit('removeTodo', obj);
     //   },
   },
-  computed: {
-      ...mapGetters(['todoItems'])
+  watch: {
+      ...mapGetters(['todoItems']),
+      ...mapState(['todoItems'])
   }
 }
 </script>

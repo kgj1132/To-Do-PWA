@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link rel="icon" href="../src/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="src/assets/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <title>Vue.js Todo</title>
   </head>
   <body>
     <div id="app"></div>
     <script src="/dist/build.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script>
       // Initialize Firebase
       var config = {
@@ -19,10 +19,10 @@
         authDomain: "todopwa-4a8b2.firebaseapp.com",
         databaseURL: "https://todopwa-4a8b2.firebaseio.com",
         projectId: "todopwa-4a8b2",
-        storageBucket: "",
+        storageBucket: "todopwa-4a8b2.appspot.com",
         messagingSenderId: "254325923122"
       };
       firebase.initializeApp(config);
     </script>
   </body>
-</html>
+  </html>

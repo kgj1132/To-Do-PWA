@@ -1,6 +1,6 @@
 {
   "name": "to-do-pwa",
-  "description": "to-do made by pwa",
+  "description": "A Vue.js project",
   "version": "1.0.0",
   "author": "kgj1132 <kgj1132@gmail.com>",
   "license": "MIT",
@@ -10,6 +10,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "@vue/cli-plugin-pwa": "^3.0.0-beta.9",
     "vue": "^2.5.11",
     "vuex": "^3.0.1"
   },
@@ -29,7 +30,6 @@
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1",
-    "webpack-pwa-manifest": "^3.5.0"
+    "webpack-dev-server": "^2.9.1"
   }
 }

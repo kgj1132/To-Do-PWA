@@ -1,17 +1,21 @@
 # to-do-pwa
 
-> to-do made by pwa
+> A Vue.js project
 
 ## Build Setup
 
 ``` bash
-# install dependencies
+#1.
+npm i vue-cli -g
+#2.
+vue init webpack-simple
+#3.
+npm i vuex --save
+#4. 
 npm install
-
-# serve with hot reload at localhost:8080
+#5.
 npm run dev
-
-# build for production with minification
+#6.
 npm run build
 ```
 

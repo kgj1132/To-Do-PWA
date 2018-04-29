@@ -1,16 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as actions from './store/action.js'
 import * as getters from './store/getters.js'
 import * as mutations from './store/mutations.js'
-
+// import * as setters from '/.store/setters.js'
 Vue.use(Vuex)
 
 const storage= {
     fetch() {
-        const items={};
+        const items={}
             for (var i=0, keys=Object.keys(localStorage); i<localStorage.length; i++) {
                 if (keys[i] !== "loglevel:webpack-dev-server") {
-                  items[keys[i]] = JSON.parse(localStorage.getItem(keys[i]));
+                    items[keys[i]]=localStorage.getItem(keys[i])
                 }
             }
         return items
@@ -22,8 +23,10 @@ export const store =new Vuex.Store({
     state: {
         todoItems: storage.fetch()
     },
-    getters,
+    getters:getters,
+    // setters:setters,
     mutations:mutations,
+    actions:actions,
     // getters : {
     //     todoItems(state) {
     //         return state.todoItems;

@@ -17,7 +17,7 @@
 
 <script>
 import Modal from './common/Modal.vue'
-import { mapMutations} from 'vuex'
+import {mapGetters, mapActions, mapState} from 'vuex'
 
 
 export default {
@@ -27,6 +27,9 @@ export default {
       showModal: false
     }
   },
+  watch: {
+      ...mapGetters(['todoItems'])
+  },
   methods: {
     //  ...mapSetters({
     //     addTodo : 'pushTodo',
@@ -35,7 +38,7 @@ export default {
       if (this.newTodoItem !== "") {
         const value = this.newTodoItem && this.newTodoItem.trim();
         // this.$emit('addTodo', value)
-        this.$store.commit('addTodo', value);
+        this.$store.dispatch('addTodo', value);
         
         this.clearInput();
       } else {
@@ -47,7 +50,7 @@ export default {
     }
   },
   components: {
-    Modal: Modal
+    Modal: Modal,
   }
 }
 </script>
