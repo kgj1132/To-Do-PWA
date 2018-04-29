@@ -1,12 +1,13 @@
+import Vue from 'vue' //반응형으로 추가삭제를 위해 생성
+
 const addTodo = (dispatch, name) => {
   var date = Date.now()
-  console.log(dispatch)
-  dispatch.state.todoItems[date]=name
+  Vue.set(dispatch.state.todoItems,date,name)  //객체 추가방법
   localStorage.setItem(date, name)
 }
 const removeTodo = (dispatch, todoItemobj) => { //todoItem { name: '', index :0 }
   localStorage.removeItem(todoItemobj.todoItemKey)
-  delete dispatch.state.todoItems[todoItemobj.todoItemKey]
+  Vue.delete(dispatch.state.todoItems,todoItemobj.todoItemKey)//객체 삭제방법
   console.log(dispatch)
 }
 
